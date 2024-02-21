@@ -43,22 +43,21 @@ S(n) = n(n + 1)/2
 
 This can also be represented by the combination of m choose k = m!/((m-k)!*k!)
 where m = n + 1 and k = 2
-(n + 1) choose 2 =
+(n + 1) choose 2
 
-                   (n + 1)!
+ = (n + 1)!
 
-                   ----------------
+   ----------------
 
-                   (n + 1 -2)! * 2!
+   (n + 1 -2)! * 2!
 
-                 = (n - 1)! * (n) * (n + 1)
+= (n - 1)! * (n) * (n + 1)
 
-                   ------------------------
+  ------------------------
 
-                   (n - 1)! * (1 * 2)
+  (n - 1)! * (1 * 2)
 
-
-                 = n(n + 1)/2
+= n(n + 1)/2
 
 Note (n - 1)! cancel out
 
