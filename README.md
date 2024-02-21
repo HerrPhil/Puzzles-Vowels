@@ -28,10 +28,15 @@ However, this is not computationally friendly.
 We use algebra to re-arrange the values.
 
 Consider S(n) + S(n)
+
  = 1 + 2 +      3 +    4     + ... + (n-3) + (n-2) + (n-1) + n
+
    n + (n-1) + (n-2) + (n-3) + ... + 4     + 3     + 2     + 1
+
  = (1 + n) + (2 + n-1) + (3 + n-2) + (4 + n-3) + ... + (n-3 + 4) + (n-2 + 3) + (n-1 + 2) + (n + 1)
+
  = (n + 1) + (n +1)    + (n + 1)   + (n + 1) + ...   + (n + 1)   + (n + 4)   + (n + 1)   + (n + 1)
+
 Note that there are n pair-sums of (n + 1)
 2S(n) = n(n + 1)
 S(n) = n(n + 1)/2
@@ -39,11 +44,17 @@ S(n) = n(n + 1)/2
 This can also be represented by the combination of m choose k = m!/((m-k)!*k!)
 where m = n + 1 and k = 2
 (n + 1) choose 2 = (n + 1)!
+
                    ----------------
+
                    (n + 1 -2)! * 2!
+
                  = (n - 1)! * (n) * (n + 1)
+
                    ------------------------
+
                    (n - 1)! * (1 * 2)
+
 Note (n - 1)! cancel out
                  = n(n + 1)/2
 
