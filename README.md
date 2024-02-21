@@ -3,8 +3,13 @@ Write a program to count the number of vowels occurring in all the substrings of
 
 Consider a string of lowercase characters that contains 0 or more vowels.
 The string is of length n and can be divided into n(n+1)/2 substrings.
+
 The simple solution is to count the number of vowels within each substring and then add them together to get the final result.
-Here is the code to count the number of vowels in all the substrings of a given string.
+
+However, this is inefficient.
+
+
+## Proof of n(n+1)/2 on why it is the total number of substrings
 
 Note that the value of n(n+1)/2 can be derived as such.
 
