@@ -43,7 +43,9 @@ S(n) = n(n + 1)/2
 
 This can also be represented by the combination of m choose k = m!/((m-k)!*k!)
 where m = n + 1 and k = 2
-(n + 1) choose 2 = (n + 1)!
+(n + 1) choose 2 =
+
+                   (n + 1)!
 
                    ----------------
 
@@ -55,8 +57,10 @@ where m = n + 1 and k = 2
 
                    (n - 1)! * (1 * 2)
 
-Note (n - 1)! cancel out
+
                  = n(n + 1)/2
+
+Note (n - 1)! cancel out
 
 This term counts the number of ways in choosing a subset of size 2 from {0,1,...,𝑛}.
 The subsets of the pair-sums from the algebraic proof.
