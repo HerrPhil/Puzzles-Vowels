@@ -1,4 +1,5 @@
 # Puzzles-Vowels
+
 Write a program to count the number of vowels occurring in all the substrings of a given String.
 
 Consider a string of lowercase characters that contains 0 or more vowels.
@@ -7,7 +8,6 @@ The string is of length n and can be divided into n(n+1)/2 substrings.
 The simple solution is to count the number of vowels within each substring and then add them together to get the final result.
 
 However, this is inefficient.
-
 
 ## Proof of n(n+1)/2 on why it is the total number of substrings
 
@@ -69,3 +69,51 @@ Note (n - 1)! cancel out
 This term counts the number of ways in choosing a subset of size 2 from {0,1,...,𝑛}.
 The subsets of the pair-sums from the algebraic proof.
 
+## First Efficient algorithm to count all the vowels occurring in all the substrings of a given string
+
+Refer to the following post.
+
+https://www.tutorialspoint.com/count-the-number-of-vowels-occurring-in-all-the-substrings-of-given-string-in-cplusplus
+
+In this approach, we will create an array of integers, which stores counts of occurrences of the ith character in all substrings in arr[i].
+
+The 0th character occurs in n substrings where is the length of the input string.
+
+The ith character occurs:
+1. in all the substrings containing it (n-i)
+2. plus the number of substrings containing the ith character as well as the previous character (arr[i-1])
+3. minus the number of substrings formed by previous characters only (i)
+
+Then sum the counts when the ith character is a vowel.
+
+Here is a sample method.
+
+```
+ //calculates total sum of all vowel occurrences
+   static int vowel_calc(String str)
+   {
+       int n = str.length();
+       int arr[] = new int[n];
+
+       for (int i = 0; i < n; i++) 
+       { 
+           if (i == 0)
+               // Number of times the 0th character occurs in all substrings
+               arr[i] = n; 
+           else
+               // Number of times the ith character occurs in all substrings
+               arr[i] = (n - i) + arr[i - 1] - i;
+       }
+
+       int sum = 0;
+       for (int i = 0; i < n; i++) {
+           char ch = str.charAt(i);
+           // Check to see if ith character is a vowel
+           if (ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u')
+           sum += arr[i];
+       }
+
+       // Return total sum of all vowel occurrences      
+       return sum;
+   }
+```
