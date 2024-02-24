@@ -123,6 +123,7 @@ Here is a sample method.
 Refer to the following posts.
 
 https://www.geeksforgeeks.org/count-the-number-of-vowels-occurring-in-all-the-substrings-of-given-string-set-2/
+
 https://stackoverflow.com/questions/71448358/given-a-string-s-of-length-n-calculate-the-number-of-occurrences-of-a-charact/71449177#71449177
 
 In a string of length n, there are n(n+1)/2 substrings.
