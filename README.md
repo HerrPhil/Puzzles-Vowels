@@ -141,11 +141,17 @@ except in substrings of **S** and in substrings of **T**.
 Thus the number of substrings in which the character appears at index **i** in a string of length n is:
 
 k_i = n(n+1)/2 - i(i+1)/2 - (n-i-1)(n-i)/2
+
 k_i = (  n(n+1) - i(i+1) - (n-i-1)(n-i)  ) / 2
+
 k_i = (  n<sup>2</sup> - i<sup>2</sup> - i - n<sup>2</sup> + ni + in - i<sup>2</sup> + n - i) / 2
+
 k_i = ( 2n + 2ni - 2i - 2i<sup>2</sup>) / 2
+
 k_i = n + ni - i - i<sup>2</sup>
+
 k_i = n(i + 1) - i(i + 1)
+
 k_i = (i + 1)(n - i)
 
 
@@ -155,6 +161,7 @@ Here is the proof for that definition of k_i.
 
 
 Now, we can generalize this pattern
+
 S(n) = 1 + 2 + 3 + 4 + ... + (n-3) + (n-2) + (n-1) + n
 
 However, this is not computationally friendly.
@@ -179,8 +186,11 @@ S(n) = n(n + 1)/2
 Now consider substrings of strings S = McN
 
 where character c is at index i
+
 Therefore for M there are S(i) = i(i + 1)/2 substrings
+
 Figure out the algebra for M and N to see what falls out
+
 For substring M, it has substrings that end at character i-1 or before.
 
 First pass, assume index i is 1-based.
@@ -188,6 +198,7 @@ First pass, assume index i is 1-based.
 M(i-1) = 1 + 2 + 3 + 4 + ... + (i-4) + (i-3) + (i-2) + (i-1)
 
 Consider M(i-1) + M(i-1)
+
  = 1     + 2     + 3     + 4 +     ... + (i-4) + (i-3) + (i-2) + (i-1)
 
  + (i-1) + (i-2) + (i-3) + (i-4) + ... + 4     + 3     + 2     + 1
@@ -197,7 +208,9 @@ Consider M(i-1) + M(i-1)
  = (i) + (i) + (i) + (i) + ... + (i) + (i) + (i) + (i)
 
 Note that there are (i - 1) pair-sums of (i)
+
 2M(i-1) = (i - 1)i
+
 M(i-1) = i(i - 1)/2
 
 
@@ -206,6 +219,7 @@ For substring N, it has substrings that start at character i+1 or after.
 N(n-i) = 1 + 2 + 3 + 4 + ... + (n-i-3) + (n-i-2) + (n-i-1) + (n-i)
 
 Consider N(n-i) + N(n-i)
+
  = 1 +       2 +       3 +       4 +       ... + (n-i-3) + (n-i-2) + (n-i-1) + (n-i)
 
    + (n-i) + (n-i-1) + (n-i-2) + (n-i-3) + ... + 4       + 3       + 2       + 1
@@ -215,16 +229,23 @@ Consider N(n-i) + N(n-i)
  = (n-i+1) + (n-i+1) + (n-i+1) + (n-i+1) + ...  + (n-i+1) + (n-i+1) + (n-i+1) + (n-i+1)
 
 Note that there are (n-i) pair-sums of (n-i+1)
+
 2N(n-i) = (n-i)(n-i+1)
+
 N(n-i) = (n-i)(n-i+1)/2
 
 Thus the number of substrings in which the character c appears at index i in a string of length n is:
 
 k_i = n(n+1)/2 - i(i-1)/2 - (n-i)(n-i+1)/2
+
 k_i = (  n(n+1) - i(i-1) - (n-i)(n-i+1)  ) / 2
+
 k_i = ( n<sup>2</sup> + n - i<sup>2</sup> - i - n<sup>2</sup> + ni +in - i<sup>2</sup> - n + i ) / 2
+
 k_i = (2ni -2i<sup>2</sup>) / 2
+
 k_i = (ni - i<sup>2</sup>)
+
 k_i = i(n-i)
 
 However, this does not produce the correct substring counts.
@@ -236,14 +257,19 @@ Now consider substrings of strings S = McN where character c is at index i.
 Also the character c is at i-th position, where 0<=i<n (index is zero-based).
 
 Note that when the character c is at the i-th index, then the length of M is i.
+
 Therefore we can assert for M there are M(i) = i(i+1)/2 substrings.
+
 Prove this now.
+
 For substring M, it has substrings that end at character i-1 or before.
+
 Second pass, i-th index is zero-based.
 
 M(i) = 1 + 2 + 3 + 4 + ... + (i-3) + (i-2) + (i-1) + i
 
 Consider M(i) + M(i)
+
  = 1 + 2     + 3     + 4 + ... + (i-3) + (i-2) + (i-1) + i
 
  + i + (i-1) + (i-2) + (i-3) ... + 4   + 3     + 2     + 1
@@ -253,40 +279,63 @@ Consider M(i) + M(i)
  = (i + 1) + (i + 1) + (i + 1) + (i + 1) + ... + (i + 1) + (i + 1) + (i + 1) + (i + 1)
 
 Note that there are i pair-sums of (i + 1)
+
 2M(i) = i(i + 1)
+
 M(i) = i(i + 1)/2
 
 Double-check this with the binomial coefficient.
+
 b choose k  = b!/((b-k)!k!)
+
 where b = i + 1 and k = 2 for pair sums
+
  = (i + 1)!/((i + 1 - 2)!2!)
+
  = (i - 1)!*(i)*(i + 1)/((i - 1)!*2)
+
  = i(i + 1) / 2
 
 Note that when the character c is at the nth index, then the length of N is n-(i+1) = n-i-1.
+
 Therefore we can assert for N there are N(n-i-1) = (n-i)(n-i-1)/2
+
 Prove this now.
+
 For substring N, it has substrings that end at character i+1 or after.
+
 Second pass, i-th index is zero-based.
 
 Check a few strings for the length of N to confirm the generalization is correct.
 
+
 012
+
 abc
+
 n=3, for "a" i-th index is 0, len(N) = 3-0-1 = 2, length of N which is "bc"
+
 n=3, for "b" i-th index is 1, len(N) = 3-1-1 = 1, length of N which is "c"
+
 n=3, for "c" i-th index is 2, len(N) = 3-2-1 = 0, length of N which is after "c", nothing
 
+
 0123
+
 abcd
+
 n=4, for character c "a" i-th index is 0, len(N) = 4-0-1 = 3, length of N which is "bcd"
+
 n=4, for character c "b" i-th index is 1, len(N) = 4-1-1 = 2, length of N which is "cd"
+
 n=4, for character c "c" i-th index is 2, len(N) = 4-2-1 = 1, length of N which is "d"
+
 n=4, for character c "d" i-th index is 3, len(N) = 4-3-1 = 0, length of N which is after "d", nothing
 
 N(n-i-1) = 1 + 2 + 3 + 4 + ... + (n-i-4) + (n-i-3) + (n-i-2) + (n-i-1)
 
 Consider N(n-i-1) + N(n-i-1)
+
  = 1       + 2       + 3       + 4 + ...       + (n-i-4) + (n-i-3) + (n-i-2) + (n-i-1)
 
  + (n-i-1) + (n-i-2) + (n-i-3) + (n-i-4) + ... + 4       + 3       + 2       + 1
@@ -296,26 +345,40 @@ Consider N(n-i-1) + N(n-i-1)
  = (n - i) + (n - i) + (n - i) + (n - i) + ...  + (n - i) + (n - i) + (n - i) + (n - i)
 
 Note that there are n-i-1 pair-sums of (n - i)
+
 2N(n - i - 1) = (n - i - 1)(n - i)
+
 N(n - i - 1)  = (n - i - 1)(n - i)/2
 
 Double-check this with the binomial coefficient.
+
 b choose k  = b!/((b-k)!k!)
+
 where b = n - i and k = 2 for pair sums
+
  = (n - i)!/((n - i - 2)!2!)
+
  = (n - i - 2)!*(n - i - 1)*(n - i)/((n - i - 2)!*2)
+
  = (n - i - 1)(n - i) / 2
 
 
 Thus the number of substrings in which the character c appears at index i in a string of length n is:
 
 k_i = n(n + 1)/2 - i(i + 1)/2 - (n - i - 1)(n - i)/2
+
 k_i = ( n(n + 1) - i(i + 1) - (n - i - 1)(n - i) ) / 2
+
 k_i = ( n<sup>2</sup> + n - i<sup>2</sup> - i - n<sup>2</sup> + ni + in - i<sup>2</sup> + n - i ) / 2
+
 k_i = ( 2n - 2i<sup>2</sup> - 2i + 2ni ) / 2
+
 k_i = n - i<sup>2</sup> - i + ni
+
 k_i = (ni + n) - (i<sup>2</sup> + i)
+
 k_i = n(i + 1) - i(i + 1)
+
 k_i = (i + 1)(n - i)
 
 Here is a sample method.
